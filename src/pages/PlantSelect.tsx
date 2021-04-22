@@ -11,6 +11,7 @@ import {
 import { EnviromentButton } from '../components/EnviromentButton'
 import { Header } from '../components/Header'
 import { PlantCardPrimary } from '../components/PlantCardPrimary'
+import {Load} from '../components/Load'
 
 import api from '../services/api'
 import colors from '../styles/colors'
@@ -39,6 +40,7 @@ export function PlantSelect() {
     const [plants, setPlants] = useState<PlantProps[]>([]);
     const [enviromentSelected, setEnviromentSelected] = useState("all");
     const [filteredPlants, setFilteredPlants] = useState<PlantProps[]>([]);
+    const [loading, setLoading] = useState(true)
 
     function handleEnviromentSelected(environment: string) {
         setEnviromentSelected(environment);
@@ -72,10 +74,15 @@ export function PlantSelect() {
         async function fetchPlants() {
             const { data } = await api.get('plants?_sort=name&_order=asc')
             setPlants(data)
+            setFilteredPlants(data);
+            setLoading(false)
         }
 
         fetchPlants();
     })
+
+    if(loading)
+        return <Load />
 
     return (
         <SafeAreaView style={styles.container}>
