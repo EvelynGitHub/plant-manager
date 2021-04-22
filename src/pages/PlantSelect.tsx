@@ -42,6 +42,10 @@ export function PlantSelect() {
     const [filteredPlants, setFilteredPlants] = useState<PlantProps[]>([]);
     const [loading, setLoading] = useState(true)
 
+    const [page, setPage] = useState(1);
+    const [loadingMore, setLoadingMore] = useState(true)
+    const [loadedAll, setLoadedAll] = useState(false)
+
     function handleEnviromentSelected(environment: string) {
         setEnviromentSelected(environment);
 
@@ -53,6 +57,30 @@ export function PlantSelect() {
         );
 
         setFilteredPlants(filtered)
+    }
+
+    function handleFetchMore(distance:number) {
+        if(distance < 1) return;
+        setLoadingMore(true)
+        setPage(oldValue => oldValue + 1)
+        fetchPlants()
+    }
+
+    async function fetchPlants() {
+        const { data } = await api.get(`plants?_sort=name&_order=asc&_page=${page}&_limit=8`)
+        
+        if(!data) return setLoading(true);
+
+        if(page > 1){
+            setPlants(oldValue => [...oldValue, ...data])
+            setFilteredPlants(oldValue => [...oldValue, ...data])
+        }else{
+            setPlants(data)
+            setFilteredPlants(data);
+        }
+
+        setLoading(false)
+        setLoadingMore(false)
     }
 
     useEffect(() => {
@@ -71,13 +99,6 @@ export function PlantSelect() {
     })
 
     useEffect(() => {
-        async function fetchPlants() {
-            const { data } = await api.get('plants?_sort=name&_order=asc')
-            setPlants(data)
-            setFilteredPlants(data);
-            setLoading(false)
-        }
-
         fetchPlants();
     })
 
@@ -121,6 +142,8 @@ export function PlantSelect() {
 
                     showsVerticalScrollIndicator={false}
                     numColumns={2}
+                    onEndReachedThreshold={0.1}
+                    onEndReached={({distanceFromEnd}) => handleFetchMore(distanceFromEnd)}
                 />
             </View>
 
