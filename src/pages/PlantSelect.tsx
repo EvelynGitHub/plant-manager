@@ -40,7 +40,7 @@ export function PlantSelect() {
 
     useEffect(() => {
         async function fetchEnviroment() {
-            const { data } = await api.get('plants_environments')
+            const { data } = await api.get('plants_environments?_sort=title&_order=asc')
             setEnviroments([
                 {
                     key: "all",
