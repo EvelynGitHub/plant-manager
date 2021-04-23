@@ -33,7 +33,7 @@ export const PlantCardPrimary = ({data, ...rest}  : PlantProps) =>{
             />
 
             <Text style={styles.text}>
-                {DataCue.name}
+                {data.name}
             </Text>
         </RectButton>
     )
