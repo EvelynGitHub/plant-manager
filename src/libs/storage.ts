@@ -43,3 +43,14 @@ export async function savePlant(plant:PlantProps): Promise<void> {
         throw new Error(error)
     } 
 }
+
+export async function loadPlant(plant:PlantProps): Promise<StoragePlantProps> {
+    try{
+        const data = await AsyncStorage.getItem('@plantmanager:plants')
+        const plants = data ? (JSON.parse(data) as StoragePlantProps) : {};
+
+        return plants;
+    }catch(error){
+        throw new Error(error)
+    } 
+}
