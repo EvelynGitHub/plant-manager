@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/core';
 import React, { useState } from 'react';
 import {
     SafeAreaView,
@@ -12,6 +11,8 @@ import {
     Keyboard,
     Alert
 } from 'react-native'
+import { useNavigation } from '@react-navigation/core';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Button } from '../components/Button'
 
@@ -42,6 +43,8 @@ export function UserIdentification() {
     function handleConfirmation() {
         if(!name)
             return Alert.alert('Me diz como posso chamar você')
+
+        AsyncStorage.setItem("@plantmanager:user", name)
 
         navigation.navigate('Confirmation')
     }
