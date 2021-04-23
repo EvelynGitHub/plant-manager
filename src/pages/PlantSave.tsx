@@ -10,7 +10,7 @@ import {
     TouchableOpacity
 } from 'react-native'
 import { SvgFromUri } from 'react-native-svg'
-import { useRoute } from '@react-navigation/core'
+import { useNavigation, useRoute } from '@react-navigation/core'
 import DateTimePicker, {Event} from '@react-native-community/datetimepicker'
 
 import waterdrop from '../assets/waterdrop.png'
@@ -28,6 +28,7 @@ export function PlantSave() {
     const [selectedDateTime, setSelectedDateTime] = useState(new Date())
     const [showDatePicker, setShowDatePicker] = useState(Platform.OS === 'ios')
     const route = useRoute()
+    const navigation = useNavigation();
 
     const { plant } = route.params as Params
 
@@ -56,6 +57,15 @@ export function PlantSave() {
                 ...plant,
                 dateTimeNotification: selectedDateTime
             })
+
+            navigation.navigate('Confirmation', {
+                title: 'Tudo certo',
+                subtitle: 'Fique tranquilo que sempre vamos lembrar você de cuidar da sua plantinha com muito cuidado.',
+                buttonTitle: 'Muito Obrigada',
+                icon: 'hug',
+                nextScreen: 'MyPlants',
+            })
+
         }catch{
             Alert.alert('Não foi possível salvar.')
         }
