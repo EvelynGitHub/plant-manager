@@ -37,6 +37,8 @@ export function MyPlants() {
             setMyPlants(plantsStoraged)
             setLoading(false)
         }
+        
+        loadStorageData()
     },[])
 
     return(
