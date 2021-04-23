@@ -6,7 +6,7 @@ import loadAnimation from '../assets/load.json'
 
 export function Load() {
     return(
-        <View >
+        <View style={styles.container}>
             <LottieView 
                 source={loadAnimation}
                 autoPlay
