@@ -15,7 +15,7 @@ interface EnviromentButtonProps extends RectButtonProps {
 export function EnviromentButton({
     title,
     active = false,
-    ... rest
+    ...rest
 }: EnviromentButtonProps) {
     return(
         <RectButton
