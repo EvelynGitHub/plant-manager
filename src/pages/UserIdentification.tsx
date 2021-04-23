@@ -40,11 +40,11 @@ export function UserIdentification() {
         setName(valeu)
     }
 
-    function handleConfirmation() {
+    async function handleConfirmation() {
         if(!name)
             return Alert.alert('Me diz como posso chamar você')
 
-        AsyncStorage.setItem("@plantmanager:user", name)
+        await AsyncStorage.setItem("@plantmanager:user", name)
 
         navigation.navigate('Confirmation')
     }
