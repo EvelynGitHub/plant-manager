@@ -43,7 +43,7 @@ export async function savePlant(plant: PlantProps): Promise<void> {
         );
 
 
-        const notificationsId =  await Notifications.scheduleNotificationAsync({
+        const notificationId =  await Notifications.scheduleNotificationAsync({
             content: {
                 title: 'Heeey, 🌱',
                 body: `Está na hora de cuidar da sua ${plant.name}`,
@@ -66,7 +66,7 @@ export async function savePlant(plant: PlantProps): Promise<void> {
         const newPlant = {
             [plant.id]: {
                 data: plant,
-                notificationsId
+                notificationId
             }
         }
 
@@ -113,6 +113,7 @@ export async function removePlant(id: string): Promise<void> {
     const data = await AsyncStorage.getItem('@plantmanager:plants')
     const plants = data ? (JSON.parse(data) as StoragePlantProps) : {}
 
+    await Notifications.cancelScheduledNotificationAsync(plants[id].notificationId)
     delete plants[id];
 
     await AsyncStorage.setItem(
