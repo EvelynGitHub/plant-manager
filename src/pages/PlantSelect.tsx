@@ -5,7 +5,8 @@ import {
     StyleSheet,
     StatusBar,
     SafeAreaView,
-    FlatList
+    FlatList,
+    ActivityIndicator
 } from 'react-native'
 
 import { EnviromentButton } from '../components/EnviromentButton'
@@ -144,6 +145,12 @@ export function PlantSelect() {
                     numColumns={2}
                     onEndReachedThreshold={0.1}
                     onEndReached={({distanceFromEnd}) => handleFetchMore(distanceFromEnd)}
+                    ListFooterComponent={
+                        loadingMore
+                        ? <ActivityIndicator color={colors.green} />
+                        : <></>
+                    }
+
                 />
             </View>
 
