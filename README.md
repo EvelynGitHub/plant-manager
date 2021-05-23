@@ -32,6 +32,7 @@ As principais funções do projeto são:
 ## Back end
 
 - Node
+- json-server
 
 ## Front end
 
@@ -49,7 +50,8 @@ Pode-se ser testado utilizando o proprio telefone celular.
 
 ## Back end
 
-Pré-requisitos: npm / yarn
+Pré-requisitos: npm / yarn, json-server, expo
+Obs.: fique atento a versão do node para a compatibilidade como o expo.
 
 ```bash
 # clonar repositório
@@ -73,19 +75,22 @@ expo start
 
 # Como começar a usar:
 
-Agora que já instalou as dependencias vai precisar executar o json-server para simular uma API, será algo como o comando abaixo.
+Agora que já instalou as dependencias vai precisar executar o json-server em um outro terminal (ou parar a aplicação e executar de novo depois) para simular uma API, será algo como o comando abaixo.
 
 ```hash
 # Executa json-server
 json-server ./src/services/server.json --host 192.168.0.111 --port 3333 --delay 700
 ```
-Caso não funcione pode ser por causa do seu host ser diferente de <code> 192.168.0.111 </code>. Nesse caso você vai precisar descobri o seu host e, depois disso abir o arquivo <code> api.js </code> dentro de <code> /src/services/api.js </code>. Agora vai precisar executar o json-server de novo com o novo host.
+Caso não funcione pode ser por causa do seu host ser diferente de <code> 192.168.0.111 </code>. Nesse caso você vai precisar saber qual host o expo está usando (pode descobrir isso olhando a pagina que o navegardor abre como QR code), depois disso precisa abir o arquivo <code> api.js </code> dentro de <code> /src/services/api.js </code> e substituir o host que está lá. Agora vai precisar executar o json-server de novo com o novo host.
 
 Prontinho, agora é com você explorar o app!
+
+Obs.: A aba <code> Minhas Plantas </code> só vai exibir algo se você tiver cadastrado uma planta antes.
 
 # Autor(es)
 
 **Evelyn Francisco Brandão**
 
 https://www.linkedin.com/in/evelyn-brandão
-github.com/EvelynGitHub/
+
+https://github.com/EvelynGitHub/
