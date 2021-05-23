@@ -24,8 +24,8 @@ As principais funções do projeto são:
 
 ## Layout mobile
 
-<!-- ![Mobile 1](https://github.com/seu_user/pasta/mobile1.png) ![Mobile 2](https://github.com/seu_user/pasta/mobile2.png) 
-![Mobile 1](https://github.com/EvelynGitHub/assets-readme/blob/main/img/home-mobile.png) ![Mobile 2](https://github.com/EvelynGitHub/assets-readme/blob/main/img/home-mobile.png)-->
+<img src="https://github.com/EvelynGitHub/assets/blob/main/plant-manager/home-app.jpg" alt="Home" width="280" /> <img src="https://github.com/EvelynGitHub/assets/blob/main/plant-manager/plantas-app.jpg" alt="Plantas do App" width="280" /> <img src="https://github.com/EvelynGitHub/assets/blob/main/plant-manager/minhas-plantas.jpg" alt="Minhas plantas" width="280" />
+
 
 # Tecnologias utilizadas:
 
